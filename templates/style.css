@@ -1,10 +1,15 @@
 h2 {
     background-color: gray;
-    color:red
+    color:black
   }
 
 .stats {
   padding: 10px;
-  background-color: lightblue
+  background-color: white
 }
   
+.jumbotron h1{
+
+  font-weight: 600;
+  
+  }

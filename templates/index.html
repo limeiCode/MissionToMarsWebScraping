@@ -23,92 +23,100 @@
 
 <body>
 
-  <!-- part1:navbar {Bootstrap} -->
-  <!--   1)Copy From Bootstrap website / Components / Navbar  https://getbootstrap.com/docs/4.3/components/navbar/
-            ** navbar's components: navbar-brand navbar-toggler navbar-collapse?? navbar-nav nav-item
-         2)adjust/change:        
+  <!-- part1:navbar {Bootstrap} 
+        ** navbar's components: navbar-brand navbar-toggler navbar-collapse navbar-nav nav-item
+        1)Copy From Bootstrap website / Components / Navbar  https://getbootstrap.com/docs/4.3/components/navbar/
+        2)adjust/change:        
   -->
 
-  <!-- part2: mainpart -->
-  <!-- 1) set grid layout       
+  <!-- part2: mainpart  
+       1) set container
+       2) set subpart as a jumbotron or a row within container
+       3) set each subpart row       
   -->
   <div class="container" style="padding:10px;">
+
     <div class="jumbotron text-center">
-      <!-- h2: css style ??? -->
-      <h2>
-        <center>Mission to Mars</center>
-      </h2>
+      <h1 class="display-4"> Mission to Mars </h1>
+      <!-- <h1 > Mission to Mars </h1> -->
       <br>
       <a class="btn btn-primary btn-lg" href="#" role="button">Scrape New Data</a>
-      <!-- round angle?? -->
       <br>
     </div>
 
     <div class="row">
-      <div class="col-md-12" style="background-color:lightseagreen!important; ">
-        <br>
+      <div class="col-md-12">
+        <!-- if no this line h4 and h6 go into one line??-->
         <h4> Latest Mars News </h4>
-        <h6> NASA’s Next Mars Mission to investigate Interior of Red Planet</h6>
-        Preparation of NASA’s next spacecraft to Mars, InSight, has ramped up this summer, on course of launch next May
-        from Vandenberg Air Force Base in central California – the first interplanetary launch in history form America’s
-        West Coast.
-        <hr>
+        <h6>{{marsdata_html.latestnews_title}} </h6>
+        <p> {{marsdata_html.latestnews_p}}</p>
+        <!-- <h6> NASA’s Next Mars Mission to investigate Interior of Red Planet</h6>
+        <p>Preparation of NASA’s       </p> -->
       </div>
     </div>
 
-    <!-- <hr> -->
     <div class="row">
-      <div class="col-md-7" style="padding:10px;background-color:lightgoldenrodyellow!important; ">
-        <h4 style="color:green"> Featured Mars Image </h4>
-        <img src="../Images/mission_to_mars.png" style="overflow:none; width:100%;height:auto" />
+      <div class="col-md-7">
+        <h4> Featured Mars Image </h4>
+        <img src={{marsdata_html.featured_image_url}} style="overflow:none; width:100%;height:auto" />
       </div>
-      <div class="col-md-4 ml-5" style="padding:10px;">
-        <!-- <img src="Resources/assets/images/Fig2.jpg" /> -->
-        <div class="row stats">
-          <h6 style="color:green"> Current Weather on Mars </h6>
-          <p style="font-size:10px;">Sol 1806(Sept 04,2017), Summy, high -25C/-13F, low -80C/-112F, pressure at 8.84
-            hPa, daylight 06:07-17:53
+      <div class="col-md-4 ml-5">
+        <!-- 7+5=12, 12+ml will take more than one row, if want ml need to make 7+4=11<12-->
+        <div class="row stats" style="border: 1px solid lightslategray!important">
+        <!-- border color is not lightslategray?? -->
+          <h6> Current Weather on Mars </h6>
+          <p style="font-size:10px;">{{marsdata_html.latestmarsweather_tweet}}
           </p>
-          <!-- <br> -->
         </div>
         <br>
-        <br>
-        <!-- <br> -->
-        <div class="row stats">
-          <h6 style="color:green"> Mars Facts </h6>
-          <br>
-          <br>
-          <br>
+        <div class="row stats" style="border: 1px solid lightslategray">
+          <h6> Mars Facts </h6>
+          <!--1)open the .html written by panda then copy paste here
+              2)adjust/change:  
+                0) add container
+                1) <table class="dataframe"> => <table class="table table-striped "> 
+                2) add [scope="col"] in <thead><tr><th>
+                3) add [scope="row"] in each <tr><th> of <tbody>   'each' too much??
+                4) remove index column : replace [<th>\w+</th>] with []
+                5) remove 
+                5) show striped : 
+                6) height:80vh : 80% of view height
+          -->
+          
         </div>
       </div>
     </div>
-
+    <br>
     <div class="row">
-      <br>
-      <h4 style="color:green"> Mars Hemispheres </h4>
-      <hr>
+      <div class="col-md-12  text-center">
+        <h4> Mars Hemispheres </h4>
+        <!-- need be wrapped in div same as above so can align with above + center-->
+        <hr> <!-- need within div-->
+      </div>
       <div class="row">
-        <div class="col-md-6" style="padding:10px;">
+        <div class="col-md-5 mr-30 ml-3" style="padding:10px; border: 1px solid lightslategray" >
           <img src="../Images/mission_to_mars.png" style="overflow:none; width:100%;height:auto" />
           Calles Marineris Hemisphere Enhanced
         </div>
-        <div class="col-md-6" style="padding:10px;">
+        <div class="col-md-5 mr-3 ml-3" style="padding:10px;border: 1px solid lightslategray">
           <img src="../Images/mission_to_mars.png" style="overflow:none; width:100%;height:auto" />
           Cerberus Hemisphere Enhanced
-        </div>
+        </div>        
       </div>
+      <br>
       <div class="row">
-        <div class="col-md-6" style="padding:10px;">
+        <div class="col-md-5 mr-30 ml-3" style="padding:10px;border: 1px solid lightslategray">
           <img src="../Images/mission_to_mars.png" style="overflow:none; width:100%;height:auto" />
           Schiaparelli Hemisphere Enhanced
         </div>
-        <div class="col-md-6" style="padding:10px;">
+        <div class="col-md-5 mr-3 ml-3" style="padding:10px;border: 1px solid lightslategray">
           <img src="../Images/mission_to_mars.png" style="overflow:none; width:100%;height:auto" />
           Syrtis Major Hemisphere Enhanced
         </div>
       </div>
     </div>
   </div>
+
   <!-- part3: footer {Bootstrap} -->
   <!--   1)Copy From https://mdbootstrap.com/docs/jquery/navigation/footer/ 
             ** footer's components: Footer Text(Grid), Copyright
