@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="style.css">
   <!-- Copy From Bootstrap website: https://getbootstrap.com/  Getting Started    {href-css vs scr-js} -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -32,82 +32,78 @@
   <!-- part2: mainpart -->
   <!-- 1) set grid layout       
   -->
-  <div class="col-md-12" style="padding:10px;">
-    <div class="col-md-8 ml-5 mr-0" style="background-color:  lightgray; color:black;">
-      <br>
+  <div class="container" style="padding:10px;">
+    <div class="jumbotron text-center">
       <!-- h2: css style ??? -->
       <h2>
         <center>Mission to Mars</center>
       </h2>
-      <h4
-        style="background-color: rgb(0, 76, 139);color:white; padding-top:10px; padding-bottom:10px; margin-left:80px; margin-right: 80px;font-size: 15px;">
-        <center>Script New Data</center>
-      </h4>
+      <br>
+      <a class="btn btn-primary btn-lg" href="#" role="button">Scrape New Data</a>
       <!-- round angle?? -->
       <br>
     </div>
 
-    <div class="col-md-8 ml-5 mr-0" style="background-color:lightseagreen!important; ">
-      <br>
-      <h4> Latest Mars News </h4>
-      <h6> NASA’s Next Mars Mission to investigate Interior of Red Planet</h6>
-      Preparation of NASA’s next spacecraft to Mars, InSight, has ramped up this summer, on course of launch next May
-      from Vandenberg Air Force Base in central California – the first interplanetary launch in history form America’s
-      West Coast.
-      <hr>
+    <div class="row">
+      <div class="col-md-12" style="background-color:lightseagreen!important; ">
+        <br>
+        <h4> Latest Mars News </h4>
+        <h6> NASA’s Next Mars Mission to investigate Interior of Red Planet</h6>
+        Preparation of NASA’s next spacecraft to Mars, InSight, has ramped up this summer, on course of launch next May
+        from Vandenberg Air Force Base in central California – the first interplanetary launch in history form America’s
+        West Coast.
+        <hr>
+      </div>
     </div>
 
-    <div class="col-md-8 ml-5 mr-0" style="background-color:lightgoldenrodyellow!important; ">
-      <br>
-      <!-- <hr> -->
-      <div class="row">
-        <div class="col-md-7" style="padding:10px;">
-          <h4 style="color:green"> Featured Mars Image </h4>
-          <img src="Resources/assets/images/Fig1.jpg" />
+    <!-- <hr> -->
+    <div class="row">
+      <div class="col-md-7" style="padding:10px;background-color:lightgoldenrodyellow!important; ">
+        <h4 style="color:green"> Featured Mars Image </h4>
+        <img src="../Images/mission_to_mars.png" style="overflow:none; width:100%;height:auto" />
+      </div>
+      <div class="col-md-4 ml-5" style="padding:10px;">
+        <!-- <img src="Resources/assets/images/Fig2.jpg" /> -->
+        <div class="row stats">
+          <h6 style="color:green"> Current Weather on Mars </h6>
+          <p style="font-size:10px;">Sol 1806(Sept 04,2017), Summy, high -25C/-13F, low -80C/-112F, pressure at 8.84
+            hPa, daylight 06:07-17:53
+          </p>
+          <!-- <br> -->
         </div>
-        <div class="col-md-5" style="padding:10px;">
-          <!-- <img src="Resources/assets/images/Fig2.jpg" /> -->
-          <div class="col-md-12 ml-0 mr-0">
-            <div class="row">
-              <h6 style="color:green"> Current Weather on Mars </h6>
-              <p style="font-size:10px;">Sol 1806(Sept 04,2017), Summy, high -25C/-13F, low -80C/-112F, pressure at 8.84
-                hPa, daylight 06:07-17:53
-              </p>
-              <!-- <br> -->
-            </div>
-            <!-- <br> -->
-            <div class="row">
-              <h6 style="color:green"> Mars Facts </h6>
-              <br>
-              <br>
-              <br>
-            </div>
-          </div>
+        <br>
+        <br>
+        <!-- <br> -->
+        <div class="row stats">
+          <h6 style="color:green"> Mars Facts </h6>
+          <br>
+          <br>
+          <br>
         </div>
       </div>
     </div>
 
-    <div class="col-md-8 ml-5 mr-0" style="background-color:lightpink!important; ">
+    <div class="row">
       <br>
       <h4 style="color:green"> Mars Hemispheres </h4>
       <hr>
       <div class="row">
         <div class="col-md-6" style="padding:10px;">
-          <img src="Resources/assets/images/Fig1.jpg" />
+          <img src="../Images/mission_to_mars.png" style="overflow:none; width:100%;height:auto" />
           Calles Marineris Hemisphere Enhanced
         </div>
         <div class="col-md-6" style="padding:10px;">
-          <img src="Resources/assets/images/Fig2.jpg" />
+          <img src="../Images/mission_to_mars.png" style="overflow:none; width:100%;height:auto" />
           Cerberus Hemisphere Enhanced
         </div>
       </div>
       <div class="row">
         <div class="col-md-6" style="padding:10px;">
-          <img src="Resources/assets/images/Fig3.jpg" />
+          <img src="../Images/mission_to_mars.png" style="overflow:none; width:100%;height:auto" />
           Schiaparelli Hemisphere Enhanced
         </div>
         <div class="col-md-6" style="padding:10px;">
-          <img src="Resources/assets/images/Fig4.jpg" />
+          <img src="../Images/mission_to_mars.png" style="overflow:none; width:100%;height:auto" />
           Syrtis Major Hemisphere Enhanced
         </div>
       </div>
