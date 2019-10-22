@@ -40,7 +40,7 @@
       <h1 class="display-4"> Mission to Mars </h1>
       <!-- <h1 > Mission to Mars </h1> -->
       <br>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Scrape New Data</a>
+      <a class="btn btn-primary btn-lg" href="http://127.0.0.1:5000/scrape" role="button">Scrape New Data</a>
       <br>
     </div>
 
@@ -98,13 +98,13 @@
         <div class="container text-center">
           <!-- must use container not row to center h4 and show hr??-->
           <br>
-          <h4> Mars Hemispheres </h4>
+          <h4> Mars Hemispheres</h4>
           <!-- need be wrapped in div to be as same as above so can align with above and can be center-->
           <hr> <!-- need within div-->
         </div>
         <div class="row">
           <!-- must use row not container to put two pic in one row ???-->
-          <div class=" col-md-5 mr-30 ml-3" style="padding:10px; border: 1px solid lightslategray">
+          <div class=" col-md-5 mr-3 ml-3" style="padding:10px; border: 1px solid lightslategray">
             <img src={{(marsdata_html.hemisphere_dictlist)[0].img_url}} style="overflow:none; width:100%;height:auto" />
             <p>{{(marsdata_html.hemisphere_dictlist)[0].title}}</p>
           </div>
@@ -115,7 +115,7 @@
         </div>
         <br>
         <div class="row">
-          <div class="col-md-5 mr-30 ml-3" style="padding:10px;border: 1px solid lightslategray">
+          <div class="col-md-5 mr-3 ml-3" style="padding:10px;border: 1px solid lightslategray">
             <img src={{(marsdata_html.hemisphere_dictlist)[2].img_url}} style="overflow:none; width:100%;height:auto" />
             <p>{{(marsdata_html.hemisphere_dictlist)[2].title}}</p>
           </div>

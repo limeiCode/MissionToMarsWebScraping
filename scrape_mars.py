@@ -13,7 +13,7 @@ def init_browser():
 
 def scrape():
     browser = init_browser()
-    marsdata_scrp = {}
+    marsdata_scrp_dict = {}
     # <1>NASA Mars News:
     # Scrape the NASA Mars News Site and collect the {latest} News [Title] and [Paragraph Text].
     # Assign the text to variables that you can reference later.
@@ -27,8 +27,8 @@ def scrape():
     news_list = soup.find_all('div', class_='list_text')
     latestnews_title = news_list[0].find('div', class_='content_title').a.text
     latestnews_p = news_list[0].find('div', class_='article_teaser_body').text
-    marsdata_scrp["latestnews_title"] = latestnews_title
-    marsdata_scrp["latestnews_p"] = latestnews_p
+    marsdata_scrp_dict["latestnews_title"] = latestnews_title
+    marsdata_scrp_dict["latestnews_p"] = latestnews_p
 
 
     # <2> JPL Mars Space Images - Featured Image :
@@ -47,7 +47,7 @@ def scrape():
     imageurl_list = soup.find_all('footer')
     featured_image_url = 'https://www.jpl.nasa.gov' + \
         imageurl_list[0].find('a', class_='button fancybox')['data-fancybox-href']
-    marsdata_scrp["featured_image_url"] = featured_image_url
+    marsdata_scrp_dict["featured_image_url"] = featured_image_url
 
     # <3> Mars Weather
     # scrape the {latest Mars weather tweet} from the page. Save the tweet text for the weather report as a variable called mars_weather.
@@ -63,7 +63,7 @@ def scrape():
     # print(soup.body.prettify())
     tweet_list = soup.find_all('div',class_='js-tweet-text-container')
     latestmarsweather_tweet = tweet_list[0].find('p').text
-    marsdata_scrp["latestmarsweather_tweet"] = latestmarsweather_tweet
+    marsdata_scrp_dict["latestmarsweather_tweet"] = latestmarsweather_tweet
 
 
     # <4> Mars Facts
@@ -121,8 +121,8 @@ def scrape():
         thtd_dict["fact"] = l[0]
         thtd_dict["value"] =l[1]    
         thtd_dictlist.append(thtd_dict.copy())  # !!.copy()
-        
-    marsdata_scrp["thtd_dictlist"] = thtd_dictlist
+
+    marsdata_scrp_dict["thtd_dictlist"] = thtd_dictlist
 
 
     # <5> Mars Hemispheres
@@ -153,9 +153,20 @@ def scrape():
     # click each of the links to the hemispheres in order to find the image url to the {full resolution image ???
     for m in item_list:
         hemisphere_dict["title"] = m.div.a.h3.text
-        hemisphere_dict["img_url"] = m.div.a["href"]
+        pageurlstr = "https://astrogeology.usgs.gov" + m.div.a["href"] # is the url for a page not for a image!! need further scape from this page to get image url!!
+    # click each of the links to the hemispheres in order to find the image url to the {full resolution image ???
+    #     pageurlstr.click() # AttributeError: 'str' object has no attribute 'click'  ???  
+    # https://astrogeology.usgs.gov/search/map/Mars/Viking/cerberus_enhanced
+    # =>
+    # https://astrogeology.usgs.gov/cache/images/cfa62af2557222a02478f1fcd781d445_cerberus_enhanced.tif_full.jpg    
+        browser.get(pageurlstr)  # not get this new page, still the previous one???
+        htmlnew = browser.page_source
+        soup = bs(htmlnew, 'html.parser').body
+        imageurlstr = "https://astrogeology.usgs.gov" + soup.find('img', class_="wide-image")["src"]
+        hemisphere_dict["img_url"] = imageurlstr
         hemisphere_dictlist.append(hemisphere_dict.copy())
-    marsdata_scrp["hemisphere_dictlist"] = hemisphere_dictlist
+        
+    marsdata_scrp_dict["hemisphere_dictlist"] = hemisphere_dictlist
                                                     
 
 
@@ -163,4 +174,4 @@ def scrape():
     browser.close()
 
     # Return results
-    return marsdata_scrp
+    return marsdata_scrp_dict
