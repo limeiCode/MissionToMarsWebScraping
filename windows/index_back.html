@@ -87,8 +87,9 @@
               {% endfor %}
             </tbody>
           </table>
-          <!-- list has only one item [0] -- the last item in the list ??? because indension erro in scrape_mars.py-->
-          <!-- jinja2.exceptions.UndefinedError: list object has no element 1 -->
+          <li>{{(marsdata_html.thtd_dictlist)[0].fact}}</li>
+          <li>{{(marsdata_html.thtd_dictlist)[0].value}}</li>
+          <!-- list has only one item [0] -- the last item in the list ??? -->
         </div>
       </div>
     </div>
@@ -105,23 +106,27 @@
         <div class="row">
           <!-- must use row not container to put two pic in one row ???-->
           <div class=" col-md-5 mr-30 ml-3" style="padding:10px; border: 1px solid lightslategray">
-            <img src={{(marsdata_html.hemisphere_dictlist)[0].img_url}} style="overflow:none; width:100%;height:auto" />
+            <img src={{(marsdata_html.hemisphere_dictlist)[0].img_url}}
+              style="overflow:none; width:100%;height:auto" />
             <p>{{(marsdata_html.hemisphere_dictlist)[0].title}}</p>
           </div>
           <div class="col-md-5 mr-3 ml-3" style="padding:10px;border: 1px solid lightslategray">
-            <img src={{(marsdata_html.hemisphere_dictlist)[1].img_url}} style="overflow:none; width:100%;height:auto" />
-            <p>{{(marsdata_html.hemisphere_dictlist)[1].title}}</p>
+            <img src={{(marsdata_html.hemisphere_dictlist)[0].img_url}}
+              style="overflow:none; width:100%;height:auto" />
+            <p>{{(marsdata_html.hemisphere_dictlist)[0].title}}</p>
           </div>
         </div>
         <br>
         <div class="row">
           <div class="col-md-5 mr-30 ml-3" style="padding:10px;border: 1px solid lightslategray">
-            <img src={{(marsdata_html.hemisphere_dictlist)[2].img_url}} style="overflow:none; width:100%;height:auto" />
-            <p>{{(marsdata_html.hemisphere_dictlist)[2].title}}</p>
+            <img src={{(marsdata_html.hemisphere_dictlist)[0].img_url}}
+              style="overflow:none; width:100%;height:auto" />
+            <p>{{(marsdata_html.hemisphere_dictlist)[0].title}}</p>
           </div>
           <div class="col-md-5 mr-3 ml-3" style="padding:10px;border: 1px solid lightslategray">
-            <img src={{(marsdata_html.hemisphere_dictlist)[3].img_url}} style="overflow:none; width:100%;height:auto" />
-            <p>{{(marsdata_html.hemisphere_dictlist)[3].title}}</p>
+            <img src={{(marsdata_html.hemisphere_dictlist)[0].img_url}}
+              style="overflow:none; width:100%;height:auto" />
+            <p>{{(marsdata_html.hemisphere_dictlist)[0].title}}</p>
           </div>
         </div>
         <!-- -->

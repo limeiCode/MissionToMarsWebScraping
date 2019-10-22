@@ -1,0 +1,5 @@
+{% for row in  marsdata_html.thtd_dictlist  %}
+            <li>{{row.fact}}</li>  
+            <li>{{row.value}}</li> 
+            {% endfor %} 
+            <!-- only loop once -- the last item in the list ??? -->

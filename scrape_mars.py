@@ -2,6 +2,7 @@
 from selenium import webdriver  # Web Scraping Framework # selenium webdriver API
 from selenium.common.exceptions import NoSuchElementException
 from bs4 import BeautifulSoup as bs
+import pandas as pd
 import time
 
 
@@ -64,6 +65,98 @@ def scrape():
     latestmarsweather_tweet = tweet_list[0].find('p').text
     marsdata_scrp["latestmarsweather_tweet"] = latestmarsweather_tweet
 
+
+    # <4> Mars Facts
+    # use Pandas to scrape the {table} containing facts about the planet including Diameter, Mass, etc.
+    # Use Pandas to convert the data to a HTML table string.
+
+    # URL of page to be scraped
+    url = 'https://space-facts.com/mars/'
+    tables = pd.read_html(url)
+    df = tables[1]
+    df.columns = ['fact', 'value']
+    # df = df.iloc[2:] # clean
+    df.set_index('fact', inplace=True)
+    html_table = df.to_html()
+    html_table.replace('\n', '')
+    # df.to_html('table.html')
+    # print(type(html_table))
+
+    soup = bs(html_table, 'html.parser').tbody
+    # print(soup.prettify())
+    # tablerow_list = soup.find_all('tr')
+    tablerowth_list = soup.find_all('th')
+    # print(tablerowth_list)
+    tablerowtd_list = soup.find_all('td')
+    # print(tablerowtd_list)
+
+    tablerowthvl_list=[]
+    tablerowtdvl_list=[]
+    tablerowthvlvl_list=[]
+    tablerowtdvlvl_list=[]
+
+    for r in tablerowth_list:
+        n = str(r)[4:]
+        tablerowthvl_list.append(n)
+    for r in tablerowthvl_list:
+        n = str(r)[:-6]
+        tablerowthvlvl_list.append(n)    
+    # print(tablerowthvlvl_list)
+
+    for r in tablerowtd_list:
+        n = str(r)[4:]
+        tablerowtdvl_list.append(n)
+    for r in tablerowtdvl_list:
+        n = str(r)[:-6]
+        tablerowtdvlvl_list.append(n)    
+    # print(tablerowtdvlvl_list)
+
+    th_and_td = zip(tablerowthvlvl_list,tablerowtdvlvl_list)
+    # print(tuple(th_and_td))
+
+    thtd_dict = {}
+    thtd_dictlist =[]
+    for i in th_and_td:
+        l=list(i)    
+        thtd_dict["fact"] = l[0]
+        thtd_dict["value"] =l[1]    
+        thtd_dictlist.append(thtd_dict.copy())  # !!.copy()
+        
+    marsdata_scrp["thtd_dictlist"] = thtd_dictlist
+
+
+    # <5> Mars Hemispheres
+    # Jason: Looks like the for the week 12 HW that the Mars Hemispheres link (https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars) is unreliable. If it is not working for you, then choose 4 images from this link instead: https://www.usgs.gov/centers/astrogeology-science-center/multimedia (edited) 
+    # obtain {high} resolution images for each of Mar's hemispheres.
+    # You will need to {{click each of the links}} to the hemispheres in order to find the image url to the {full resolution image}.
+    # Save both the image url string for the full resolution hemisphere image, and the Hemisphere title containing the hemisphere name. Use a Python dictionary to store the data using the keys img_url and title.
+    # Append the dictionary with the image url string and the hemisphere title to a list. This list will contain one dictionary for each hemisphere.
+    # hemisphere_image_urls = [
+    #     {"title": "Valles Marineris Hemisphere", "img_url": "..."},
+    #     {"title": "Cerberus Hemisphere", "img_url": "..."},
+    #     {"title": "Schiaparelli Hemisphere", "img_url": "..."},
+    #     {"title": "Syrtis Major Hemisphere", "img_url": "..."},
+    # ]
+
+    # URL of page to be scraped
+    url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
+    browser.get(url)
+    # Scrape page into Soup
+    html = browser.page_source
+    # Create BeautifulSoup object; parse with 'html.parser'
+    soup = bs(html, 'html.parser')
+    # Examine the results, then determine element that contains sought info
+    # print(soup.body.prettify())
+    hemisphere_dictlist = []
+    hemisphere_dict = {}
+    item_list = soup.find_all('div', class_="item")
+    # click each of the links to the hemispheres in order to find the image url to the {full resolution image ???
+    for m in item_list:
+        hemisphere_dict["title"] = m.div.a.h3.text
+        hemisphere_dict["img_url"] = m.div.a["href"]
+        hemisphere_dictlist.append(hemisphere_dict.copy())
+    marsdata_scrp["hemisphere_dictlist"] = hemisphere_dictlist
+                                                    
 
 
     # Close the browser after scraping
