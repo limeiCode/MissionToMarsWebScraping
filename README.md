@@ -5,7 +5,7 @@
 
 - - -
 
-![mission_to_mars1.jpg](Images/mission_to_mars1.jpg)
+![mission_to_mars1.jpg](images/mission_to_mars1.jpg)
 
 - - -
 
