@@ -5,7 +5,7 @@
 
 - - -
 
-![mission_to_mars1.jpg](images/mission_to_mars1.jpg)
+![mission_to_mars1.jpg](static/images/mission_to_mars1.jpg)
 
 - - -
 
@@ -50,7 +50,7 @@ By sending requests from **Brower** to the **Flask Server** can get below result
 
 - - -
 
-![result_1.png](resultimages/result_1.png)
-![result_2.png](resultimages/result_2.png)
+![result_1.png](static/images/result_1.png)
+![result_2.png](static/images/result_2.png)
 
 - - -
