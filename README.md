@@ -1,7 +1,7 @@
 
 # Mission to Mars Web Scraping
 
-This project used <span style="color:purple;">**Flask</span> and <span style="color:purple;">MongoDB</span> to scrape from various websites for data related to the Mission to Mars then render the templates with the scraped data by using <span style="color:purple;">**Jinja Template**</span> library on a HTML page. 
+This project used <span style="color:purple;">**Flask**</span> and <span style="color:purple;">**MongoDB**</span> to scrape from various websites for data related to the Mission to Mars then render the templates with the scraped data by using <span style="color:purple;">**Jinja Template**</span> library on a HTML page. 
 
 - - -
 
