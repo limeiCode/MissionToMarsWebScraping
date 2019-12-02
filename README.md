@@ -43,6 +43,7 @@ This project used <span style="color:purple;">**Flask**</span> and <span style="
 
 * **index.html**: a template HTML file structured using bootstrap takes the mars data dictionary and displays all of the data in the appropriate HTML elements.
 
+* **mars.db**: It is created when it is connected by PyMongo. And it holds only one document which is the most recent scrapped data.
 
 ## Final Results
 
