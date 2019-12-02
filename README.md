@@ -1,7 +1,7 @@
 
 # Mission to Mars Web Scraping
 
-This project used <span style="color:purple;">**Flask**</span> and <span style="color:purple;">**MongoDB**</span> to scrape from various websites for data related to the Mission to Mars then render the templates with the scraped data by using <span style="color:purple;">**Jinja Template**</span> library on a HTML page. 
+This project used <span style="color:purple;">**HTML, CSS, Bootstrap Table, Flask, Selenium, Beautiful Soup**</span> and <span style="color:purple;">**MongoDB**</span> to scrape from various websites for data related to the Mission to Mars then render the templates with the scraped data by using <span style="color:purple;">**Jinja Template**</span> library on a HTML page. 
 
 - - -
 
@@ -25,6 +25,8 @@ This project used <span style="color:purple;">**Flask**</span> and <span style="
 
 ## Technologies Used
 
+*  **Bootstrap Table** is used to set the layout of the webpage and it can makes a *Responsive Tables* by using `table-responsive` class. It scrolls horizontally up to small devices (under 768px) and when viewing on anything larger than 768px wide no any difference.
+
 * Web Scraping Framework **Selenium** and it's API **Webdriver** are used to connect with the browser and navigate the sites.
 
 * Third party Python library **Beautiful Soup** is used to parse out the necessary data from HTML documents using the parse tree created by Beautiful Soup.
@@ -37,13 +39,13 @@ This project used <span style="color:purple;">**Flask**</span> and <span style="
 
 ## Project Files:
 
-* **scrape_mars.py**: scraper has a function called `scrape` that will execute all scraping code from five websites and return one Python dictionary containing all of the scraped data. 
+* **scrape_mars.py**: This file works as a scraper, it has a function called `scrape` that will execute all scraping code from five websites and return one Python dictionary containing all of the scraped data. 
 
-* **app.py**: Flask Application has two routes. The root route `/` that will query Mongo database and pass the current mars data into an HTML template to display the data. The other route called `/scrape` that will import `scrape_mars.py` script and call `scrape` function and store new mars data - the return value in Mongo as a Python dictionary. 
+* **app.py**: It is the Flask Server which has two routes. The root route `/` that will query Mongo database and pass the current mars data into an HTML template to display the data. The other route called `/scrape` that will import `scrape_mars.py` script and call `scrape` function and store new mars data - the return value in Mongo as a Python dictionary. 
 
-* **index.html**: a template HTML file structured using bootstrap takes the mars data dictionary and displays all of the data in the appropriate HTML elements.
+* **index.html**: It is `Jinja` template HTML file structured by using `bootstrap`, it takes the mars data dictionary and displays all of the data in the appropriate HTML elements.
 
-* **mars.db**: It is created when it is connected by PyMongo. And it holds only one document which is the most recent scrapped data.
+* **mars.db**: It is created when it is connected by `PyMongo`. And it holds only one document which is the *most recent* scrapped data.
 
 ## Final Results
 
