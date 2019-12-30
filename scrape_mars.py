@@ -89,8 +89,8 @@ def scrape():
     tables = pd.read_html(url)
 
     # Save data from the table containing facts into Panda DataFrame
-    df = tables[1]  
-    df.columns = ['fact', 'value']
+    df = tables[0] # tables[1]: Error: ValueError: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+    df.columns = ['fact', 'value']  
     df.set_index('fact', inplace = True)
 
     # Use Pandas to convert the data to a HTML table string
