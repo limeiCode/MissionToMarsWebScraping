@@ -53,7 +53,7 @@ By sending requests from **Brower** to the **Flask Server** can get below result
 
 - - -
 
-![result_1.png](static/images/result_1.png)
-![result_2.png](static/images/result_2.png)
+![result_1.png](static/images/12run.gif)
+
 
 - - -
